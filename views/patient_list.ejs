@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+    <title>Data Visualization Tool</title>
+
+    <link rel="shortcut icon" href="assets/img/favicon.png" />
+
+    <link
+      rel="stylesheet"
+      href="assets/plugins/bootstrap/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" href="assets/css/all.min.css" />
+
+    <link
+      rel="stylesheet"
+      href="assets/plugins/simple-calendar/simple-calendar.css"
+    />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+    <div class="main-wrapper">
+      <div class="page-wrapper">
+        <div class="content container-fluid">
+          <div class="page-header">
+            <div class="row align-items-center">
+              <div class="col">
+                <h3 class="page-title">Patient</h3>
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item active"><h2>Patients List</h2></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card card-table">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover table-center mb-0">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Full Name</th>
+                          <th>Last Checked</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>
+                            <a href="patient_data"
+                              ><h2>Eston Mhango</h2></a
+                            >
+                          </td>
+
+                          <td>
+                            <p>Today, 5:00 AM</p>
+                          </td>
+
+                          <td>
+                            <button class="btn btn-success">active</button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>
+                            <a href="patient_data"
+                              ><h2>Ephraim Mandala</h2></a
+                            >
+                          </td>
+                          <td>
+                            <p>Today, 5:00 AM</p>
+                          </td>
+                          <td>
+                            <button class="btn btn-danger">offline</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer>
+          <p>Copyright © 2023 Data Visualisation Tool</p>
+        </footer>
+      </div>
+    </div>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/datatables/datatables.min.js"></script>
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

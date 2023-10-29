@@ -1,0 +1,61 @@
+// Maintain a list to store data points for the last 1 minute
+const dataPoints = [];
+
+function updateChart() {
+    $.get("/api/chart-data")
+        .done(function (data) {
+            if (data.hr !== null) {
+                // Determine color based on heart rate range...
+                let color;
+                // Your color determination logic here...
+
+                // Create a data point with x, y, and color properties
+                const dataPoint = {
+                    x: new Date().toLocaleTimeString(),
+                    y: data.hr,
+                    fillColor: color,
+                };
+
+                // Add the new data point to the list
+                dataPoints.push(dataPoint);
+
+                // Calculate the timestamp for 1 minute ago
+                const oneMinuteAgo = new Date();
+                oneMinuteAgo.setMinutes(oneMinuteAgo.getMinutes() - 1);
+
+                // Filter out data points older than 1 minute
+                const filteredDataPoints = dataPoints.filter((point) => {
+                    return new Date(point.x) > oneMinuteAgo;
+                });
+
+                // Calculate the average of heart rate values
+                const total = filteredDataPoints.reduce((acc, point) => {
+                    return acc + point.y;
+                }, 0);
+                const averageHeartRate = total / filteredDataPoints.length;
+
+                // Update the chart with the average heart rate
+                options1.xaxis.categories.push(dataPoint.x);
+                options1.series[0].data.push({
+                    x: dataPoint.x,
+                    y: averageHeartRate,
+                    fillColor: color,
+                });
+
+                // Remove the oldest data point if the count exceeds maxDataPoints
+                if (options1.xaxis.categories.length > maxDataPoints) {
+                    options1.xaxis.categories.shift();
+                    options1.series[0].data.shift();
+                }
+
+                chart1.updateOptions(options1);
+
+                // Update the average heart rate in the HTML element
+                const averageHeartRateElement = document.getElementById('average-heart-rate');
+                averageHeartRateElement.textContent = averageHeartRate.toFixed(2) + ' bpm';
+            }
+        })
+        .fail(function (error) {
+            console.error("Error fetching data:", error);
+        });
+}
