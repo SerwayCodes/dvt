@@ -41,15 +41,15 @@ $(document).ready(function () {
 
   function getHeartRateIcon(hr) {
     if (hr >= 0 && hr <= 40) {
-      return '<i class="fa-solid fa-caret-up fa-2xl" style="color: #FF0000;"></i>';
+      return '<i class="fa-solid fa-heart fa-2xl" style="color: #FF0000;"></i>';
     } else if (hr > 40 && hr <= 59) {
-      return '<i class="fa-solid fa-caret-up fa-2xl" style="color: #FFA500;"></i>';
+      return '<i class="fa-solid fa-heart fa-2xl" style="color: #FFA500;"></i>';
     } else if (hr > 59 && hr <= 90) {
-      return '<i class="fa-solid fa-caret-up fa-2xl" style="color: #fff;"></i>';
+      return '<i class="fa-solid fa-heart fa-2xl" style="color: #fff;"></i>';
     } else if (hr > 90 && hr <= 170) {
-      return '<i class="fa-solid fa-caret-up fa-2xl" style="color: #FFA500;"></i>';
+      return '<i class="fa-solid fa-heart fa-2xl" style="color: #FFA500;"></i>';
     } else {
-      return '<i class="fa-solid fa-caret-up fa-2xl" style="color: #FF0000;"></i>';
+      return '<i class="fa-solid fa-heart fa-2xl" style="color: #FF0000;"></i>';
     }
   }
 
@@ -135,7 +135,7 @@ $(document).ready(function () {
         // Update the average heart rate in the HTML element
         const averageHeartRateElement =
           document.getElementById("average-heart-rate");
-        averageHeartRateElement.textContent = data.hr + " bpm";
+        averageHeartRateElement.textContent = data.hr + " BPM";
 
         const hrnotification = document.getElementById("hrnoti");
         hrnotification.textContent = notification;
@@ -167,7 +167,7 @@ $(document).ready(function () {
         show: false,
       },
     },
-    colors: ["#D80032", "#EE9322", "#00EF00", "#EE9322", "#D80032"],
+    colors: ["#fff", "#EE9322", "#00EF00", "#EE9322", "#D80032"],
     series: [
       {
         name: "Heart Rate",
@@ -248,7 +248,7 @@ $(document).ready(function () {
         show: false,
       },
     },
-    colors: ["#00EF00", "#EE9322", "#00EF00", "#EE9322", "#D80032"],
+    colors: ["#fff", "#EE9322", "#00EF00", "#EE9322", "#D80032"],
     series: [
       {
         name: "Respiratory Rate",
@@ -301,15 +301,15 @@ $(document).ready(function () {
 
   function getRespIcon(resp) {
     if (resp >= 0 && resp <= 5) {
-      return '<i class="fa-solid fa-caret-up fa-2xl" style="color: #D80032;"></i>';
+      return '<i class="fa-solid fa-lungs fa-2xl" style="color: #D80032;"></i>';
     } else if (resp > 5 && resp <= 9) {
-      return '<i class="fa-solid fa-caret-up fa-2xl" style="color: #FFA500;"></i>';
+      return '<i class="fa-solid fa-lungs fa-2xl" style="color: #FFA500;"></i>';
     } else if (resp > 9 && resp <= 30) {
-      return '<i class="fa-solid fa-caret-up fa-2xl" style="color: #fff;"></i>';
+      return '<i class="fa-solid fa-lungs fa-2xl" style="color: #fff;"></i>';
     } else if (resp > 30 && resp <= 60) {
-      return '<i class="fa-solid fa-caret-up fa-2xl" style="color: #FFA500;"></i>';
+      return '<i class="fa-solid fa-lungs fa-2xl" style="color: #FFA500;"></i>';
     } else {
-      return '<i class="fa-solid fa-caret-up fa-2xl" style="color: #FF0000;"></i>';
+      return '<i class="fa-solid fa-lungs fa-2xl" style="color: #FF0000;"></i>';
     }
   }
 
@@ -329,8 +329,8 @@ $(document).ready(function () {
           color = "#EE9322";
         } else if (data.resp >= 9 && data.resp < 30) {
           notification = "  Normal";
-          //NORMAL
-          color = "#00EF00";
+          //NORMAL RESP
+          color = "#FFCA4A";
         } else if (data.resp >= 30 && data.resp < 60) {
           notification = "  Too high";
 
@@ -368,7 +368,7 @@ $(document).ready(function () {
         chart2.updateOptions(options2);
 
         const averageRespElement = document.getElementById("average-resp-rate");
-        averageRespElement.textContent = data.resp + "min";
+        averageRespElement.textContent = data.resp + " RESP";
 
         const respnotification = document.getElementById("Respnoti");
         respnotification.textContent = notification;
@@ -404,7 +404,7 @@ $(document).ready(function () {
         show: false,
       },
     },
-    colors: ["#D80032", "#EE9322", "#00EF00", "#EE9322", "#D80032"],
+    colors: ["#fff", "#EE9322", "#00EF00", "#EE9322", "#D80032"],
     series: [
       {
         name: "SPO2",
@@ -421,7 +421,7 @@ $(document).ready(function () {
         },
       },
       tickAmount: 10, // Set the number of ticks (adjust according to your preference)
-      min: 60, // Set the minimum value of the y-axis
+      min: 0, // Set the minimum value of the y-axis
       max: 100, // Set the maximum value of the y-axis
       title: {
         text: "SPO2",
@@ -473,21 +473,18 @@ $(document).ready(function () {
         let color;
         let notification = "";
         if (data.spo2 >= 60 && data.spo2 <= 80) {
-          notification = "  Critically Low";
+          notification = " Critically Low";
           //CRTICALLY LOW
           color = "#D80032";
         } else if (data.spo2 > 80 && data.spo2 <= 85) {
           notification = "  Too Low";
           //TOO LOW
           color = "#EE9322";
-        } else if (data.spo2 > 85 && data.spo2 < 100) {
+        } else if (data.spo2 > 85 && data.spo2 <= 100) {
           notification = "  Normal";
-          // NORMAL
-          color = "#00EF00";
-        } else {
-          notification = "  Critically High";
-          color = "#D80032";
-        }
+          // NORMAL SPO2
+          color = "#00EFEF";
+        } 
 
         // Create a data point with x, y, and color properties
         const dataPoint = {
@@ -538,11 +535,11 @@ $(document).ready(function () {
     newRow.appendChild(timeCell);
 
     const heartRateCell = document.createElement("td");
-    heartRateCell.textContent = data.hr + " bpm";
+    heartRateCell.textContent = data.hr + " BPM";
     newRow.appendChild(heartRateCell);
 
     const respiratoryRateCell = document.createElement("td");
-    respiratoryRateCell.textContent = data.resp + " min";
+    respiratoryRateCell.textContent = data.resp + " RESP";
     newRow.appendChild(respiratoryRateCell);
 
     const spo2Cell = document.createElement("td");

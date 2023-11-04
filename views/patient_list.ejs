@@ -32,7 +32,6 @@
           <div class="page-header">
             <div class="row align-items-center">
               <div class="col">
-                <h3 class="page-title">Patient</h3>
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item active"><h2>Patients List</h2></li>
                 </ul>
@@ -51,41 +50,29 @@
                           <th>ID</th>
                           <th>Full Name</th>
                           <th>Last Checked</th>
-                          <th>Status</th>
+                         
                         </tr>
                       </thead>
+
                       <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>
-                            <a href="patient_data"
-                              ><h2>Eston Mhango</h2></a
-                            >
-                          </td>
-
-                          <td>
-                            <p>Today, 5:00 AM</p>
-                          </td>
-
-                          <td>
-                            <button class="btn btn-success">active</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>
-                            <a href="patient_data"
-                              ><h2>Ephraim Mandala</h2></a
-                            >
-                          </td>
-                          <td>
-                            <p>Today, 5:00 AM</p>
-                          </td>
-                          <td>
-                            <button class="btn btn-danger">offline</button>
-                          </td>
-                        </tr>
-                      </tbody>
+                        <% let rowNum = 1; %>
+                        <% patients.forEach(function(patient){ %>
+                            <tr>
+                                <td><%= rowNum %></td>
+                                <td>
+                                  <a href="patient_data?id=<%= patient.patientid %>">
+                                    <h2><%= patient.patientname %></h2>
+                                 </a>
+                                 
+                                </td>
+                                <td>
+                                    <p><%= patient.timeofreview %></p>
+                                </td>
+                            </tr>
+                            <% rowNum++; %>
+                        <% }) %>
+                    </tbody>
+                    
                     </table>
                   </div>
                 </div>
@@ -93,10 +80,11 @@
             </div>
           </div>
         </div>
-        <footer>
-          <p>Copyright © 2023 Data Visualisation Tool</p>
-        </footer>
+        
       </div>
+      <footer>
+        <p class="text-center">Copyright © 2023 Data Visualisation Tool</p>
+      </footer>
     </div>
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="assets/js/popper.min.js"></script>

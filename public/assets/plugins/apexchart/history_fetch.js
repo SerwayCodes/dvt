@@ -1,10 +1,9 @@
-"use strict";
 
 //------------------------------------------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------------------------------------------------
 
-$(document).ready(function () {
+function fetchDataBasedOnDateTime(startTime) {
   const maxDataPoints = 10;
 
   const chartType = "line";
@@ -84,7 +83,7 @@ $(document).ready(function () {
 
         // Create a data point with x, y, and color properties
         const dataPoint = {
-          x: new Date().toLocaleTimeString(),
+          x: startTime,
           y: data.hr,
           fillColor: color, // Use 'fillColor' for setting the point color
         };
@@ -328,7 +327,7 @@ $(document).ready(function () {
 
         // Create a data point with x, y, and color properties
         const dataPoint = {
-          x: new Date().toLocaleTimeString(),
+          x: startTime,
           y: data.resp,
           fillColor: color, // Use 'fillColor' for setting the point color
         };
@@ -353,7 +352,7 @@ $(document).ready(function () {
         chart2.updateOptions(options2);
 
         const averageRespElement = document.getElementById("average-resp-rate");
-        averageRespElement.textContent = data.resp + " RESP";
+        averageRespElement.textContent = data.resp + "min";
 
         const respnotification = document.getElementById("Respnoti");
         respnotification.textContent = notification;
@@ -406,7 +405,7 @@ $(document).ready(function () {
         },
       },
       tickAmount: 10, // Set the number of ticks (adjust according to your preference)
-      min: 0, // Set the minimum value of the y-axis
+      min: 60, // Set the minimum value of the y-axis
       max: 100, // Set the maximum value of the y-axis
       title: {
         text: "SPO2",
@@ -473,7 +472,7 @@ $(document).ready(function () {
 
         // Create a data point with x, y, and color properties
         const dataPoint = {
-          x: new Date().toLocaleTimeString(),
+          x: startTime,
           y: data.spo2,
           fillColor: color, // Use 'fillColor' for setting the point color
         };
@@ -515,7 +514,7 @@ $(document).ready(function () {
 
     // Create and append table cells for each data field
     const timeCell = document.createElement("td");
-    timeCell.textContent = new Date().toLocaleTimeString();
+    timeCell.textContent = startTime;
     newRow.appendChild(timeCell);
 
     const heartRateCell = document.createElement("td");
@@ -523,7 +522,7 @@ $(document).ready(function () {
     newRow.appendChild(heartRateCell);
 
     const respiratoryRateCell = document.createElement("td");
-    respiratoryRateCell.textContent = data.resp + " RESP";
+    respiratoryRateCell.textContent = data.resp + " min";
     newRow.appendChild(respiratoryRateCell);
 
     const spo2Cell = document.createElement("td");
@@ -541,4 +540,4 @@ $(document).ready(function () {
   }
 
   //=======================================================================================================================================
-});
+};

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./head_include.ejs' ); -%>
+
+  <body>
+    <%- include('./nav.ejs' ); -%>
+
+    <div class="main-wrapper">
+      <%- include('./sidebar.ejs' ); -%>
+      <div class="page-wrapper">
+        <div class="container-fluid mt-3">
+          <h2 class="mb-4">Patient Review Details</h2>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Patient Name</th>
+                  <th>Date of Review</th>
+                  <th>Time of Review</th>
+                  <th>General Condition</th>
+                  <th>Treatment Plan</th>
+                  <th>Observations</th>
+                  <th>Follow-up Recommendations</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% patient.forEach(function(review) { %>
+                <tr>
+                  <td><%= review.patientname %></td>
+                  <td><%= review.dateofreview %></td>
+                  <td><%= review.timeofreview %></td>
+                  <td><%= review.generalcondition %></td>
+                  <td><%= review.treatmentplan %></td>
+                  <td><%= review.observations %></td>
+                  <td><%= review.followuprecommendations %></td>
+                </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('./script.ejs' ); -%>
+  </body>
+</html>

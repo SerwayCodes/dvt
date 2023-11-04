@@ -32,30 +32,47 @@
               </a>
               <ul class="dropdown-menu">
                 <li>
-                  <a class="dropdown-item" id="linegraph" href="patient_data"
+                  <a class="dropdown-item" id="linegraph" href="patient_data?id=<%= patient[0].patientid %>"
                     >Line Graph</a
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" id="histogram" href="bar-type"
+                  <a class="dropdown-item" id="histogram" href="bar-type?id=<%= patient[0].patientid %>"
                     >Histogram Trend</a
                   >
                 </li>
-                <li>
-                  <a class="dropdown-item" id="tabular" href="#"
-                    >Tabular Trend</a
-                  >
-                </li>
+                
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
-                >Notifications</a
+              <a class="nav-link active" aria-current="page" href="history?id=<%= patient[0].patientid %>"
+                >History</a
               >
             </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Nurses Reviews</a>
-            </li>
+            <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle active"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Reviews
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" id="" href="patient_review?id=<%= patient[0].patientid %>"
+                      >View Patient Reviews</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" id="" href="add_review?id=<%= patient[0].patientid %>"
+                      >Add Review</a
+                    >
+                  </li>
+                 
+                </ul>
+              </li>
           </ul>
         </div>
       </div>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./head_include.ejs' ); -%>
+  <body>
+    <%- include('./nav.ejs' ); -%>
+
+    <div class="main-wrapper">
+      <%- include('./sidebar.ejs' ); -%>
+      <div class="page-wrapper">
+        <div class="container mt-5">
+          <h1 class="mb-4">Nurse Reviews Form</h1>
+          <form action="/add_review?id=<%= patient[0].patientid %>" method="post">
+            <!-- Basic Information -->
+            <% if(messages.error) { %>
+              <div class="alert alert-danger"><%= messages.error %></div>
+              <% } %>
+              <% if(messages.success) { %>
+                <div class="alert alert-success"><%= messages.success %></div>
+                <% } %>
+
+            <div class="mb-3">
+              <label for="dateOfReview" class="form-label"
+                >Date of Review:</label
+              >
+              <input
+                type="date"
+                class="form-control"
+                id="dateOfReview"
+                name="dateOfReview"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="dateOfReview" class="form-label"
+                >Time of Review:</label
+              >
+              <input
+                type="time"
+                class="form-control"
+                id="timeOfReview"
+                name="timeOfReview"
+                required
+              />
+            </div>
+
+
+          
+
+            <div class="mb-3">
+              <label for="generalCondition" class="form-label"
+                >General Condition:</label
+              >
+              <select
+                class="form-select"
+                id="generalCondition"
+                name="generalCondition"
+                required
+              >
+                <option value="good">Good</option>
+                <option value="fair">Improving</option>
+                <option value="fair">Critical</option>
+                <option value="fair">Deteriating</option>
+                <option value="poor">Poor</option>
+              </select>
+            </div>
+
+            <!-- Detailed Assessment -->
+            <div class="mb-3">
+              <label for="treatmentPlan" class="form-label"
+                >Treatment Plan:</label
+              >
+              <textarea
+                class="form-control"
+                id="treatmentPlan"
+                name="treatmentPlan"
+                rows="10"
+                required
+              ></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="observations" class="form-label">Observations:</label>
+              <textarea
+                class="form-control"
+                id="observations"
+                name="observations"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="followUpRecommendations" class="form-label"
+                >Follow-up Recommendations:</label
+              >
+              <textarea
+                class="form-control"
+                id="followUpRecommendations"
+                name="followUpRecommendations"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Confirmation -->
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="confirmationCheckbox" name="confirmationCheckbox"
+                    required>
+                <label class="form-check-label" for="confirmationCheckbox">Confirm Accuracy</label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="submitButton" class="btn btn-primary" disabled>Submit</button>
+       
+          </form>
+        </div>
+      </div>
+    </div>
+    <%- include('./script.ejs' ); -%>
+    <script> 
+        // Enable the submit button when the checkbox is checked
+        const confirmationCheckbox = document.getElementById('confirmationCheckbox');
+        const submitButton = document.getElementById('submitButton');
+
+        confirmationCheckbox.addEventListener('change', function () {
+            submitButton.disabled = !confirmationCheckbox.checked;
+        });
+    </script>
+  </body>
+</html>
